@@ -146,43 +146,20 @@ namespace TabBtsVS
 
         static void afficherMoyenne(string[] tabEleves, string[] tabMatieres, double[,] tabNotes)
         {
-            double moyenneEleve = 0, moyenneClasse;
-            int compteur = 0;
+            int i, j;
+            double[] s = new double[10];
 
-            // moyenne de l'eleve sera le ses notes * le nombre de matieres
-            // moyenne de classe sera la moyenne entre une matiere et plusieurs eleves
-
-            //      Matiere Matiere Matiere
-
-            //nom   note    note    note        Moyenne eleve
-            //nom   note    note    note        Moyenne eleve
-            //nom   note    note    note        Moyenne eleve
-
-            //      classe  classe  classe
-
-
-            // Pour les élèves 2 boucles une de première de longueur élève dedans  
-            // fais une boucle de longueur matière et dans le for de matière tu vérifies 
-            // si la note est différente de 99 et si c’est le cas tu rentre la valeur dans une variable 
-            // et faut que tu compte de nombre de note aussi et une fois la boucle matière est fini 
-            // (j’ai créé une nouvelle liste pour la moyenne élève ) et tu rentres la variable avec la 
-            // somme des notes que tu as compter dans la boucles matière / par nombre des notes et après 
-            // ça va recommencer pour le deuxième élève
-            for (int i = 0; i < tabEleves.Length; i++)
+            for (i = 0; i < 10; i++)
             {
-                for (int j = 0; j < tabMatieres.Length; j++)
+                for (j = 0; j < 9; j++)
                 {
-                    moyenneEleve = 0;
-                    if (tabNotes[i, j] != 99)
-                    {
-                        moyenneEleve += tabNotes[i, j];
-                        Console.WriteLine(tabNotes[i, j]);
-                        compteur += 1;
-                    }
+                    s[i] = s[i] + tabNotes[i, j];
+                    
                 }
-                moyenneEleve = moyenneEleve / compteur;
-                Console.WriteLine(moyenneEleve);
-
+            }
+            for(i = 0; i < 10; i++)
+            {
+                Console.WriteLine(tabEleves[i] + " " + s[i]);
             }
         }
 
